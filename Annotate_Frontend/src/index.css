@@ -1,0 +1,205 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:from-purple-700 hover:to-pink-700 transition-all;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500;
+  }
+  
+  .card {
+    @apply bg-black/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10;
+  }
+} */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Global base styles ---------- */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+    'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(circle at top left, rgba(129, 140, 248, 0.25), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(248, 113, 113, 0.2), transparent 55%),
+    #020617; /* slate-950 */
+  color: #e5e7eb; /* slate-200 */
+}
+
+/* Optional: subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.9); /* slate-900 */
+  border-radius: 9999px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes soft-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(129, 140, 248, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px 0 rgba(129, 140, 248, 0.45);
+  }
+}
+
+/* ---------- Component layer utilities ---------- */
+@layer components {
+  /* Layout shell */
+  .app-shell {
+    @apply min-h-screen text-slate-100 flex flex-col;
+  }
+
+  .app-page {
+    @apply flex-1 w-full max-w-6xl mx-auto px-4 py-6 md:py-8 lg:py-10;
+    animation: fade-in-up 0.3s ease-out;
+  }
+
+  /* Cards */
+  .app-card {
+    @apply rounded-2xl border border-slate-800/70 bg-slate-900/80 backdrop-blur-xl;
+    @apply shadow-[0_18px_45px_rgba(15,23,42,0.75)];
+  }
+
+  .app-card-soft {
+    @apply rounded-xl border border-slate-800/60 bg-slate-900/70;
+  }
+
+  .app-card-hover {
+    @apply transition-transform duration-200 ease-out;
+  }
+  .app-card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.85);
+  }
+
+  .app-section-title {
+    @apply text-xl md:text-2xl font-semibold text-slate-50;
+  }
+
+  .app-subtitle {
+    @apply text-sm text-slate-400;
+  }
+
+  /* Badges / chips */
+  .badge-muted {
+    @apply inline-flex items-center rounded-full border border-slate-700/70 
+           bg-slate-900/80 px-2.5 py-0.5 text-[11px] font-medium 
+           uppercase tracking-wide text-slate-300;
+  }
+
+  .badge-pill {
+    @apply inline-flex items-center gap-1 rounded-full bg-slate-800/80 px-2.5 py-0.5 
+           text-[11px] font-medium text-slate-200;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl 
+           px-4 py-2 text-sm font-medium text-white
+           bg-gradient-to-r from-indigo-500 via-indigo-400 to-sky-400
+           hover:from-indigo-500 hover:via-sky-400 hover:to-sky-300
+           transition-all duration-150 ease-out
+           shadow-[0_12px_30px_rgba(56,189,248,0.45)]
+           disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl 
+           px-4 py-2 text-sm font-medium text-slate-100
+           bg-slate-800/90 hover:bg-slate-700
+           border border-slate-700/80
+           transition-all duration-150 ease-out;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl 
+           px-4 py-2 text-sm font-medium text-white
+           bg-rose-600 hover:bg-rose-700
+           shadow-[0_10px_25px_rgba(225,29,72,0.45)]
+           transition-all duration-150 ease-out;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg 
+           px-3 py-1.5 text-sm font-medium text-slate-200
+           bg-transparent hover:bg-slate-800/70
+           transition-colors;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl text-sm
+           bg-slate-900/90 border border-slate-700
+           text-slate-100 placeholder-slate-500
+           focus:outline-none focus:border-indigo-400 focus:ring-0;
+  }
+
+  /* Legacy names mapped to new style so you don't break existing JSX */
+  .glass-effect {
+    @apply app-card;
+  }
+
+  .card {
+    @apply app-card p-6;
+  }
+
+  /* Small helper animation classes */
+  .animate-soft-glow {
+    animation: soft-glow 3s ease-in-out infinite;
+  }
+
+  .animate-subtle-pulse {
+    animation: subtle-pulse 2.4s ease-in-out infinite;
+  }
+}
+

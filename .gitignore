@@ -1,0 +1,28 @@
+
+# Environment
+.env
+
+# Backend (Spring Boot)
+Annotate/target/
+Annotate/.mvn/
+*.log
+
+# Frontend (React + Vite)
+Annotate_Frontend/node_modules/
+Annotate_Frontend/dist/
+Annotate_Frontend/dist-ssr/
+
+# Uploaded user content (CRITICAL)
+Annotate/uploads/
+Annotate/uploads/videos/
+Annotate/uploads/videos/*.mp4
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.iml
+*.ipr
+*.iws
+
