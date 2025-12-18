@@ -1,43 +1,36 @@
-Annotate
+# Annotate
 
-Annotate is a full-stack web application built for collaborative video review and feedback.
-It allows users to upload videos, add time-based annotations, and manage feedback in a structured way.
+Annotate is a full-stack web application designed for collaborative video review and time-based feedback.  
+It allows users to upload videos, add timestamped comments, and manage feedback in a structured workflow.
 
-The project is built as a single deployable unit with a React frontend, a Spring Boot backend, and PostgreSQL, all containerized using Docker.
+The project is built and deployed as a single unit using Docker, with a React frontend, a Spring Boot backend, and a PostgreSQL database.
 
-Tech Stack
+---
 
-Backend
+## Tech Stack
 
-Java
+### Backend
+- Java
+- Spring Boot
+- Spring Security (JWT)
+- Hibernate / JPA
+- PostgreSQL
 
-Spring Boot
+### Frontend
+- React
+- Vite
+- Tailwind CSS
+- Axios
+- Framer Motion
 
-Spring Security (JWT)
+### Infrastructure
+- Docker
+- Docker Compose
 
-PostgreSQL
+---
 
-Hibernate / JPA
+## Project Structure
 
-Frontend
-
-React
-
-Vite
-
-Tailwind CSS
-
-Axios
-
-Framer Motion
-
-Infrastructure
-
-Docker
-
-Docker Compose
-
-Project Structure
 Annotate-FullStack/
 │
 ├── Annotate/              # Spring Boot backend
@@ -46,49 +39,74 @@ Annotate-FullStack/
 ├── .env.example
 └── README.md
 
-Running the project with Docker
-Prerequisites
+---
 
-Docker
+## Running the Application (Docker)
 
-Docker Compose
+### Prerequisites
+- Docker
+- Docker Compose
 
-Steps:
+---
 
-Clone the repository
+### Setup
 
+Clone the repository:
+
+```bash
 git clone https://github.com/devks19/Annotate.git
 cd Annotate-FullStack
+```
 
-
-Create environment file
-
+Create environment variables:
+```bash
 cp .env.example .env
-
-
-Build and start all services
-
+```
+Build and start the application:
+```bash
 docker compose up --build
+```
+---
 
-Accessing the application
+## Access URLs
 
-Frontend: http://localhost:3000
+Frontend  
+```bash
+http://localhost:3000
+```
+Backend API
 
-Backend API: http://localhost:8080
+```bash
+http://localhost:8080
+```
+---
 
-PostgreSQL runs internally via Docker
-
-File uploads
+## File Upload Handling
 
 User-uploaded videos are not stored in the Git repository.
 
-Uploads are handled at runtime and stored using Docker volumes.
+All uploaded media is handled at runtime and stored using Docker volumes.  
 This keeps the repository clean and avoids versioning large binary files.
 
-Notes
+---
 
-Frontend and backend are kept in the same repository for easier local development and deployment.
+## Notes
 
-Environment-specific values (database credentials, secrets, etc.) are not committed to Git.
+- Frontend and backend are maintained in a single repository for easier development and deployment.
+- Sensitive configuration values are managed through environment variables.
+- The application is designed to run consistently across local and containerized environments.
 
-The application is designed to run the same way locally and in containerized environments.
+---
+
+## Future Improvements
+
+- External object storage for video uploads
+- Reverse proxy setup using Nginx
+- CI/CD pipeline for automated builds and deployments
+- Improved access control and role management
+
+---
+
+## Author
+
+Kanak Raj Saraf
